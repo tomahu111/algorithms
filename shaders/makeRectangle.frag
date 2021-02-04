@@ -12,6 +12,19 @@ uniform float u_time;
 vec3 makeRect(float x1, float y1, float x2, float y2)
 {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    float temp;
+    if(x1>x2)
+    {
+        temp=x1;
+        x1=x2;
+        x2=temp;
+    }
+    if(y1>y2)
+    {
+        temp=y1;
+        y1=y2;
+        y2=temp;
+    }
     return vec3(step(x1,st.x) * step(y1,st.y) * step(st.x, x2) * step(st.y, y2));
 }
 
